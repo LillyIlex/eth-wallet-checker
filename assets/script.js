@@ -15,13 +15,30 @@ $.ajax({
 })
 
 
-//AJAX
-/* $.ajax({
-    url: ,
+//click event for modal button - function
+$("modal-button").on("click", function(){
+
+})
+// pull user input into wallet Key var
+var walletKey = $("#wallet-key:text").val()
+//
+
+//var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
+var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey +"&tag=latest&apikey=" + apiKey
+
+//console.log(walletURL)
+
+//AJAX TARGETING WALLET BALANCE
+$.ajax({
+    url: walletURL,
     method: "GET"
 }).then(function (response) {
-    console.log(response)
-}) */
+   // console.log(response)
+    var weiResult = response.result
+    var ethBalance = weiResult / 1000000000000000000
+    console.log(ethBalance)
+    //display balance 
+})
 
 
 //MODAL
