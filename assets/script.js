@@ -11,13 +11,51 @@ $.ajax({
     var safe = response.result.SafeGasPrice
     var proposed = response.result.ProposeGasPrice
     var fast = response.result.FastGasPrice
-    console.log( safe + " " + proposed + " " + fast)
+    console.log(safe + " " + proposed + " " + fast)
 })
 
-//modal
 
-//form submit
+//AJAX
+/* $.ajax({
+    url: ,
+    method: "GET"
+}).then(function (response) {
+    console.log(response)
+}) */
 
-//local storage
+
+//MODAL
+
+//FORM - wallet key
+
+//LOCAL STORAGE
+// local save to client side storage, Save what coin you are tracking, display last 10 searches?
 
 //clear button
+/*$(".clearBtn").on("click", function() {
+     localStorage.clear()
+   });*/
+
+//TIME DISPLAY
+/* Current date and time from moment.js
+    // DATE & TIME FROM MOMENT.JS
+var datetime = null,
+    date = null;
+
+var update = function () {
+    date = moment(new Date())
+    datetime.html(date.format('dddd, MMMM Do YYYY, h:mm a'));
+};
+$(document).ready(function () {
+    datetime = $('#currentDay')
+    update();
+    setInterval(update, 1000);
+});
+
+*/
+
+    //SET INTERVAL 
+/* function setInterval() {
+    for () {
+}, 1000;
+} */
