@@ -2,6 +2,8 @@ var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
 //console.log(gasURL)
 
+
+
 //ajax to target gas
 $.ajax({
     url: gasURL,
@@ -15,18 +17,37 @@ $.ajax({
 })
 
 
+
+
+
 //click event for modal button - function
-$("modal-button").on("click", function(){
+$("#modal-button").on("click", function(){
 
 })
-// pull user input into wallet Key var
-var walletKey = $("#wallet-key:text").val()
-//
 
+
+//CLICK EVENT FOR GO BUTTON
+
+$("#go-button").on("click", function(){
+    // pull user input into wallet Key var
+    var walletKeyInput = $("#wallet-key:text").val()
+    var walletKey = walletKeyInput
 //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
 var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey +"&tag=latest&apikey=" + apiKey
-
 //console.log(walletURL)
+ 
+ localStorage.setItem("walletKey", walletKey);
+
+//trigger modal
+
+
+ //if save then append to search history
+$(function () {
+    $("#1").append(walletKey)
+})
+
+
+
 
 //AJAX TARGETING WALLET BALANCE
 $.ajax({
@@ -35,15 +56,16 @@ $.ajax({
 }).then(function (response) {
    // console.log(response)
     var weiResult = response.result
-    var ethBalance = weiResult / 1000000000000000000
-    console.log(ethBalance)
+    var ethBalance = (weiResult  / 1000000000000000000).toFixed(3)
+   
     //display balance 
+    //console.log(ethBalance)
+})
 })
 
 
 //MODAL
 
-//FORM - wallet key
 
 //LOCAL STORAGE
 // local save to client side storage, Save what coin you are tracking, display last 10 searches?
