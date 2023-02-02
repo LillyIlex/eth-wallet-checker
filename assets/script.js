@@ -43,16 +43,8 @@ var walletURL = "https://api.etherscan.io/api?module=account&action=balance&addr
 
 //console.log(walletURL)
  
- localStorage.setItem("walletKey", walletKey);
 
 //trigger modal
-
-
- //if save then append to search history
-$(function () {
-    $("#1").append(walletKey)
-})
-
 
 
 
@@ -73,6 +65,33 @@ $.ajax({
 
 
 //MODAL
+
+
+    //when yes button is clicked -> get text input from the wallet search box -> push into local storage
+    
+    //checks for the yes button on the modal being clicked
+    $("#modalYes").on("click", function(){
+
+        //gets the wallet key that was inputted
+        let keyValue = $("#wallet-key").val();
+
+        //saved the key to the local storage
+        localStorage.setItem("walletKey", keyValue);
+    })
+
+
+ //if save then append to search history
+$(function () {
+    $("#1").append(walletKey)
+})
+
+
+
+
+
+
+
+//FORM - wallet key
 
 
 //LOCAL STORAGE
