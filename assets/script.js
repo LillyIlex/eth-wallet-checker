@@ -53,6 +53,13 @@ $.ajax({
 
         //saved the key to the local storage
         localStorage.setItem("walletKey", keyValue);
+
+        $('#exampleModal').modal('hide');
+    })
+
+    $("#modalNo").on("click", function(){
+
+        $('#exampleModal').modal('hide');
     })
 
 
