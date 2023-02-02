@@ -3,28 +3,35 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
 //console.log(gasURL)
 
 //ajax to target gas
-$.ajax({
-    url: gasURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response)
-    var safe = response.result.SafeGasPrice
-    var proposed = response.result.ProposeGasPrice
-    var fast = response.result.FastGasPrice
-    console.log(safe + " " + proposed + " " + fast)
+//function setInterval() {
+    $.ajax({
+        url: gasURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response)
+        var safe = response.result.SafeGasPrice
+        var proposed = response.result.ProposeGasPrice
+        var fast = response.result.FastGasPrice
+        //console.log(safe + " " + proposed + " " + fast)
+        $("#safeGas").append(safe)
+        $("#proposedGas").append(proposed)
+        $("#fastGas").append(fast)
+
+    //}), 1000;
 })
 
-
 //click event for modal button - function
-$("modal-button").on("click", function(){
+$("modal-button").on("click", function () {
 
 })
 // pull user input into wallet Key var
 var walletKey = $("#wallet-key:text").val()
 //
 
+
 //var walletKeyTest = "0x838fD718955cF139ef03fA187AD0E58D2EB04Af3"
 var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKeyTest +"&tag=latest&apikey=" + apiKey
+
 
 //console.log(walletURL)
 
@@ -33,7 +40,7 @@ $.ajax({
     url: walletURL,
     method: "GET"
 }).then(function (response) {
-   // console.log(response)
+    // console.log(response)
     var weiResult = response.result
     var ethBalance = (weiResult  / 1000000000000000000).toFixed(4)
     console.log(ethBalance)
