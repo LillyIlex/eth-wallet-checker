@@ -5,25 +5,31 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
 
 
 //ajax to target gas
-$.ajax({
-    url: gasURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response)
-    var safe = response.result.SafeGasPrice
-    var proposed = response.result.ProposeGasPrice
-    var fast = response.result.FastGasPrice
-    console.log(safe + " " + proposed + " " + fast)
+//function setInterval() {
+    $.ajax({
+        url: gasURL,
+        method: "GET"
+    }).then(function (response) {
+        console.log(response)
+        var safe = response.result.SafeGasPrice
+        var proposed = response.result.ProposeGasPrice
+        var fast = response.result.FastGasPrice
+        //console.log(safe + " " + proposed + " " + fast)
+        $("#safeGas").append(safe)
+        $("#proposedGas").append(proposed)
+        $("#fastGas").append(fast)
+
+    //}), 1000;
 })
-
-
 
 
 
 //click event for modal button - function
 $("#modal-button").on("click", function(){
 
+
 })
+
 
 
 //CLICK EVENT FOR GO BUTTON
@@ -34,6 +40,7 @@ $("#go-button").on("click", function(){
     var walletKey = walletKeyInput
 //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
 var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey +"&tag=latest&apikey=" + apiKey
+
 //console.log(walletURL)
  
  localStorage.setItem("walletKey", walletKey);
@@ -54,13 +61,14 @@ $.ajax({
     url: walletURL,
     method: "GET"
 }).then(function (response) {
-   // console.log(response)
+    // console.log(response)
     var weiResult = response.result
-    var ethBalance = (weiResult  / 1000000000000000000).toFixed(3)
-   
+    
+    var ethBalance = (weiResult  / 1000000000000000000).toFixed(4)
+    console.log(ethBalance)
     //display balance 
-    //console.log(ethBalance)
-})
+    $("#balanceDisplay").append(ethBalance)
+
 })
 
 

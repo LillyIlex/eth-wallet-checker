@@ -18,7 +18,7 @@
     <header>
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Fluid jumbotron</h1>
+                <h1 class="display-4">Ether Scanner</h1>
                 <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
                 </p>
             </div>
@@ -39,13 +39,14 @@
 
               </div>
           </div>
-          <div class="col-4">Balance Display 
-
+          <div class="col-4"> 
             <div class="card" style="width: 18rem;">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                </ul>
+              <div class="card-body">
+                <h5 class="balanceTitle">Ethereum Balance</h5>
+                <br>
+                <p class="balanceDisplay" id="balanceDisplay"></p>
               </div>
+            </div>
           </div>
           <div class="w-100"></div>
           <div class="col-8">Search History
@@ -61,10 +62,17 @@
           <div class="col-4">Gas Tracker
             <div class="card" style="width: 18rem;">
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item">An item</li>
-                  <li class="list-group-item">Another  item</li>
-                  <li class="list-group-item">A second item</li>
-                  <li class="list-group-item">A third item</li>
+                  <li class="list-group-item" id="safeGas">
+                    Safe Gas: 
+                  </li>
+ 
+                  <li class="list-group-item" id="proposedGas">
+                    Proposed Gas: 
+                  </li>
+
+                  <li class="list-group-item" id="fastGas">
+                    Fast Gas: 
+                  </li>
                 </ul>
               </div>
           </div>
