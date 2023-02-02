@@ -40,7 +40,7 @@ $("#go-button").on("click", function(){
     var walletKey = walletKeyInput
 //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
 var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey +"&tag=latest&apikey=" + apiKey
-
+});
 //console.log(walletURL)
  
 
@@ -81,9 +81,11 @@ $.ajax({
 
 
  //if save then append to search history
+ /*
 $(function () {
-    $("#1").append(walletKey)
-})
+   $("#1.innerHTML").localStorage.getItem(keyValue)
+    $("#1").append(keyValue)
+}) */
 
 
 
