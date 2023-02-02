@@ -38,6 +38,7 @@
           <div class="input-group-prepend">
             <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
           </div>
+
           <input type="text" class="form-control" aria-label="Sizing example input"
             aria-describedby="inputGroup-sizing-sm" id="wallet-key">
           <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save</button>
@@ -59,6 +60,47 @@
                 <h5>Do you want to save this wallet key?</h5>
                 <button type="button" class="btn btn-outline-secondary" id="modalYes">Yes</button>
                 <button type="button" class="btn btn-outline-secondary">No</button>
+                              </div>
+            </div>
+          </div>
+        </div>
+
+          <div class="col-4"> 
+            <div class="card" style="width: 18rem;">
+              <div class="card-body">
+                <h5 class="balanceTitle">Ethereum Balance</h5>
+                <br>
+                <p class="balanceDisplay" id="balanceDisplay"></p>
+              </div>
+            </div>
+          </div>
+          <div class="w-100"></div>
+          <div class="col-8">Search History
+
+            <div class="list-group" id="history" style="width: 30rem";>
+                <button type="button" class="btn btn-primary" id="1" data-state="hidden"></button><br>
+                <button type="button" class="btn btn-primary" id="2" data-state="hidden"></button><br>
+                <button type="button" class="btn btn-primary" id="3" data-state="hidden"></button><br>
+                <button type="button" class="btn btn-primary" id="4" data-state="hidden"></button><br>
+                <button type="button" class="btn btn-primary" id="5" data-state="hidden"></button><br>
+              </div>
+          </div>
+          <div class="col-4">Gas Tracker
+            <div class="card" style="width: 18rem;">
+                <ul class="list-group list-group-flush">
+                  <li class="list-group-item" id="safeGas">
+                    Safe Gas: 
+                  </li>
+ 
+                  <li class="list-group-item" id="proposedGas">
+                    Proposed Gas: 
+                  </li>
+
+                  <li class="list-group-item" id="fastGas">
+                    Fast Gas: 
+                  </li>
+                </ul>
+
               </div>
             </div>
           </div>
