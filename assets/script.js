@@ -28,8 +28,10 @@ $("modal-button").on("click", function () {
 var walletKey = $("#wallet-key:text").val()
 //
 
-//var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
-var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey + "&tag=latest&apikey=" + apiKey
+
+//var walletKeyTest = "0x838fD718955cF139ef03fA187AD0E58D2EB04Af3"
+var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKeyTest +"&tag=latest&apikey=" + apiKey
+
 
 //console.log(walletURL)
 
@@ -40,9 +42,10 @@ $.ajax({
 }).then(function (response) {
     // console.log(response)
     var weiResult = response.result
-    var ethBalance = weiResult / 1000000000000000000
-    //console.log(ethBalance)
+    var ethBalance = (weiResult  / 1000000000000000000).toFixed(4)
+    console.log(ethBalance)
     //display balance 
+    $("#balanceDisplay").append(ethBalance)
 })
 
 
