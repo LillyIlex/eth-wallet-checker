@@ -39,9 +39,16 @@
             <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
           </div>
 
-          <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm" id="wallet-key">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save</button>
+    <div class="container">
+        <div class="row">
+          <div class="col-8">Wallet ID input
+            <div class="input-group input-group-sm mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text" id="inputGroup-sizing-sm">Check Balance</span>
+                </div>
+                <input type="text" class="form-control" id="wallet-key" aria-label="Sizing example input" aria-describedby="inputGroup-sizing-sm" placeholder="Enter your wallet key here...">
+                <button class="btn btn-outline-secondary goBtn" type="button" id="go-button">Go</button>
+
 
         </div>
 

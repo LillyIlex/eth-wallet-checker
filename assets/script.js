@@ -2,6 +2,8 @@ var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
 //console.log(gasURL)
 
+
+
 //ajax to target gas
 //function setInterval() {
     $.ajax({
@@ -20,20 +22,31 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
     //}), 1000;
 })
 
+
+
 //click event for modal button - function
-$("modal-button").on("click", function () {
+$("#modal-button").on("click", function(){
+
 
 })
-// pull user input into wallet Key var
-var walletKey = $("#wallet-key:text").val()
-//
 
 
-//var walletKeyTest = "0x838fD718955cF139ef03fA187AD0E58D2EB04Af3"
-var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKeyTest +"&tag=latest&apikey=" + apiKey
 
+//CLICK EVENT FOR GO BUTTON
+
+$("#go-button").on("click", function(){
+    // pull user input into wallet Key var
+    var walletKeyInput = $("#wallet-key:text").val()
+    var walletKey = walletKeyInput
+//var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
+var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey +"&tag=latest&apikey=" + apiKey
 
 //console.log(walletURL)
+ 
+
+//trigger modal
+
+
 
 //AJAX TARGETING WALLET BALANCE
 $.ajax({
@@ -42,14 +55,17 @@ $.ajax({
 }).then(function (response) {
     // console.log(response)
     var weiResult = response.result
+    
     var ethBalance = (weiResult  / 1000000000000000000).toFixed(4)
     console.log(ethBalance)
     //display balance 
     $("#balanceDisplay").append(ethBalance)
+
 })
 
 
 //MODAL
+
 
     //when yes button is clicked -> get text input from the wallet search box -> push into local storage
     
@@ -64,6 +80,10 @@ $.ajax({
     })
 
 
+ //if save then append to search history
+$(function () {
+    $("#1").append(walletKey)
+})
 
 
 
@@ -72,6 +92,7 @@ $.ajax({
 
 
 //FORM - wallet key
+
 
 //LOCAL STORAGE
 // local save to client side storage, Save what coin you are tracking, display last 10 searches?
