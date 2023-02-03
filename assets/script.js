@@ -4,6 +4,7 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
 //saved the content of localstorage in the variable preSave
 var preSave = JSON.parse(localStorage.getItem("walletSave"));
 
+
  //first check if presave is empty -> 
  if (preSave===null){
     console.log("empty")
@@ -17,36 +18,62 @@ else{
 
 //ajax to target gas
 //function setInterval() {
-$.ajax({
-    url: gasURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response)
-    var safe = response.result.SafeGasPrice
-    var proposed = response.result.ProposeGasPrice
-    var fast = response.result.FastGasPrice
-    //console.log(safe + " " + proposed + " " + fast)
-    $("#safeGas").append(safe)
-    $("#proposedGas").append(proposed)
-    $("#fastGas").append(fast)
 
-    //}), 1000;
-})
+$(document).ready(function () {
+    var update = function () {
 
+        $.ajax({
+            url: gasURL,
+            method: "GET"
+
+//MODAL
+
+
+
+        }).then(function (response) {
+            var safe = response.result.SafeGasPrice
+            var proposed = response.result.ProposeGasPrice
+            var fast = response.result.FastGasPrice
+            console.log(safe + " " + proposed + " " + fast)
+
+            $("#safeGas").append(safe)
+            $("#proposedGas").append(proposed)
+            $("#fastGas").append(fast)
+        });
+    }
+    $("#safeGas").val("")
+    $("#proposedGas").val("")
+    $("#fastGas").val("")
+    setInterval(update, 1000);
+});
 
 //CLICK EVENT FOR GO BUTTON
 
-$("#go-button").on("click", function () {
+//when yes button is clicked -> get text input from the wallet search box -> push into local storage
 
-    // pull user input into wallet Key var
-    var walletKeyInput = $("#wallet-key:text").val()
-    var walletKey = walletKeyInput
 
-    console.log(walletKey)
+//checks for the yes button on the modal being clicked
+$("#modalYes").on("click", function () {
+    //clear wallet key input
+    $("#wallet-key").val("");
+
+    //gets the wallet key that was inputted
+    let keyValue = $("#wallet-key").val();
+
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
-    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey + "&tag=latest&apikey=" + apiKey
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
-    //console.log(walletURL)
+       var walletSave = {
+        walletKey: keyValue,
+        }
+
+        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
+
+        prevSave.push(walletSave);
+        localStorage.setItem("walletSave", JSON.stringify(prevSave));
+
+
+
 
     //AJAX TARGETING WALLET BALANCE
     $.ajax({
@@ -63,40 +90,36 @@ $("#go-button").on("click", function () {
 
     });
 
+    //saved the key to the local storage
+    localStorage.setItem("walletKey", keyValue);
+
+    $('#exampleModal').modal().hide()
 })
 
-//MODAL
+$("#modalNo").on("click", function () {
+   $("#wallet-key").val("");
 
+    $('#exampleModal').modal().hide();
 
-//when yes button is clicked -> get text input from the wallet search box -> push into local storage
-
-//checks for the yes button on the modal being clicked
-$("#modalYes").on("click", function () {
-
-    //gets the wallet key that was inputted
     let keyValue = $("#wallet-key").val();
+    //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
 
-        //saved the key to the local storage
-       // localStorage.setItem("walletKey", keyValue);
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
 
-       var walletSave = {
-        walletKey: keyValue,
-        }
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+    });
 
-        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
-
-        prevSave.push(walletSave);
-        localStorage.setItem("walletSave", JSON.stringify(prevSave));
-
-
-        $('#exampleModal').modal().hide()
-    })
-        //hides the modal when NO save button is clicked
-    $("#modalNo").on("click", function(){
-
-        $('#exampleModal').modal().hide();
-    })
+})
 
 
     
