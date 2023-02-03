@@ -6,22 +6,32 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
 
 //ajax to target gas
 //function setInterval() {
-$.ajax({
-    url: gasURL,
-    method: "GET"
-}).then(function (response) {
-    console.log(response)
-    var safe = response.result.SafeGasPrice
-    var proposed = response.result.ProposeGasPrice
-    var fast = response.result.FastGasPrice
-    //console.log(safe + " " + proposed + " " + fast)
-    $("#safeGas").append(safe)
-    $("#proposedGas").append(proposed)
-    $("#fastGas").append(fast)
 
-    //}), 1000;
-})
+$(document).ready(function () {
+    var update = function () {
 
+        $.ajax({
+            url: gasURL,
+            method: "GET"
+
+
+
+        }).then(function (response) {
+            var safe = response.result.SafeGasPrice
+            var proposed = response.result.ProposeGasPrice
+            var fast = response.result.FastGasPrice
+            console.log(safe + " " + proposed + " " + fast)
+
+            $("#safeGas").append(safe)
+            $("#proposedGas").append(proposed)
+            $("#fastGas").append(fast)
+        });
+    }
+    $("#safeGas").val("")
+    $("#proposedGas").val("")
+    $("#fastGas").val("")
+    setInterval(update, 1000);
+});
 
 //CLICK EVENT FOR GO BUTTON
 
@@ -50,6 +60,8 @@ $("#go-button").on("click", function () {
         //display balance 
         $("#balanceDisplay").append(ethBalance)
 
+
+
     });
 
 })
@@ -66,16 +78,16 @@ $("#modalYes").on("click", function () {
     let keyValue = $("#wallet-key").val();
 
 
-        //saved the key to the local storage
-        localStorage.setItem("walletKey", keyValue);
+    //saved the key to the local storage
+    localStorage.setItem("walletKey", keyValue);
 
-        $('#exampleModal').modal().hide()
-    })
+    $('#exampleModal').modal().hide()
+})
 
-    $("#modalNo").on("click", function(){
+$("#modalNo").on("click", function () {
 
-        $('#exampleModal').modal().hide();
-    })
+    $('#exampleModal').modal().hide();
+})
 
 
 
