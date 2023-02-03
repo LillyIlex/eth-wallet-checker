@@ -1,6 +1,20 @@
 var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
 //console.log(gasURL)
+//saved the content of localstorage in the variable preSave
+var preSave = JSON.parse(localStorage.getItem("walletSave"));
+
+
+ //first check if presave is empty -> 
+ if (preSave===null){
+    console.log("empty")
+}
+
+else{
+    console.log(preSave)
+}
+
+//function preSave
 
 //ajax to target gas
 //function setInterval() {
@@ -49,6 +63,18 @@ $("#modalYes").on("click", function () {
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
     var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
+       var walletSave = {
+        walletKey: keyValue,
+        }
+
+        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
+
+        prevSave.push(walletSave);
+        localStorage.setItem("walletSave", JSON.stringify(prevSave));
+
+
+
+
     //AJAX TARGETING WALLET BALANCE
     $.ajax({
         url: walletURL,
@@ -96,14 +122,38 @@ $("#modalNo").on("click", function () {
 })
 
 
+    
+    function preSaveAppend(){
+        //looping through the presave array
+        for (i=0; i<preSave.length; i++){
+            //for every position in the presave array, it will look into the array and get the position value
+            var walletKeyId = preSave[i].walletKey;
+            //console.log(walletKeyId)
 
- //if save then append to search history
+            var buttonPosition = i+1;
+
+            if (buttonPosition===1) {
+                $("#1").append(walletKeyId)
+            } else if (buttonPosition===2) {
+                $("#2").append(walletKeyId)
+            }
+            else if (buttonPosition===3) {
+                $("#3").append(walletKeyId)
+            }
+            else if (buttonPosition===4) {
+                $("#4").append(walletKeyId)
+            }
+            else if (buttonPosition===5) {
+                $("#5").append(walletKeyId)
+            }
+        }
+    }
+    //calling the function here
+    preSaveAppend();
 /*
-$(function () {
-  $("#1.innerHTML").localStorage.getItem(keyValue)
-   $("#1").append(keyValue)
-}) */
-
+    $(function () {
+        $("#1").append(localStorage.getItem("walletSave"))
+    })*/
 
 
 
