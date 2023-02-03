@@ -1,8 +1,19 @@
 var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
 //console.log(gasURL)
+//saved the content of localstorage in the variable preSave
+var preSave = JSON.parse(localStorage.getItem("walletSave"));
 
+ //first check if presave is empty -> 
+ if (preSave===null){
+    console.log("empty")
+}
 
+else{
+    console.log(preSave)
+}
+
+//function preSave
 
 //ajax to target gas
 //function setInterval() {
@@ -67,25 +78,59 @@ $("#modalYes").on("click", function () {
 
 
         //saved the key to the local storage
-        localStorage.setItem("walletKey", keyValue);
+       // localStorage.setItem("walletKey", keyValue);
+
+       var walletSave = {
+        walletKey: keyValue,
+        }
+
+        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
+
+        prevSave.push(walletSave);
+        localStorage.setItem("walletSave", JSON.stringify(prevSave));
+
 
         $('#exampleModal').modal().hide()
     })
-
+        //hides the modal when NO save button is clicked
     $("#modalNo").on("click", function(){
 
         $('#exampleModal').modal().hide();
     })
 
 
+    
+    function preSaveAppend(){
+        //looping through the presave array
+        for (i=0; i<preSave.length; i++){
+            //for every position in the presave array, it will look into the array and get the position value
+            var walletKeyId = preSave[i].walletKey;
+            //console.log(walletKeyId)
 
- //if save then append to search history
+            var buttonPosition = i+1;
+
+            if (buttonPosition===1) {
+                $("#1").append(walletKeyId)
+            } else if (buttonPosition===2) {
+                $("#2").append(walletKeyId)
+            }
+            else if (buttonPosition===3) {
+                $("#3").append(walletKeyId)
+            }
+            else if (buttonPosition===4) {
+                $("#4").append(walletKeyId)
+            }
+            else if (buttonPosition===5) {
+                $("#5").append(walletKeyId)
+            }
+        }
+    }
+    //calling the function here
+    preSaveAppend();
 /*
-$(function () {
-  $("#1.innerHTML").localStorage.getItem(keyValue)
-   $("#1").append(keyValue)
-}) */
-
+    $(function () {
+        $("#1").append(localStorage.getItem("walletSave"))
+    })*/
 
 
 
