@@ -36,13 +36,14 @@
       <div class="col-8">Wallet ID input
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
-            <span class="input-group-text" id="inputGroup-sizing-sm">Small</span>
+
+            <span class="input-group-text" id="inputGroup-sizing-sm">Check Balance</span>
           </div>
-
-          <input type="text" class="form-control" aria-label="Sizing example input"
-            aria-describedby="inputGroup-sizing-sm" id="wallet-key">
-          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Save</button>
-
+          <input type="text" class="form-control" id="wallet-key" aria-label="Sizing example input"
+            aria-describedby="inputGroup-sizing-sm" placeholder="Enter your wallet key here...">
+          <button class="btn btn-outline-secondary goBtn" type="button" id="go-button" data-toggle="modal"
+          data-target="#exampleModal">Go</button>
+          
         </div>
       </div>
 
@@ -59,6 +60,7 @@
             <div class="modal-body">
               <!-- Add modal content here -->
               <h5>Do you want to save this wallet key?</h5>
+
               <button type="button" class="btn btn-outline-secondary" id="modalYes" data-dismiss="modal">Yes</button>
               <button type="button" class="btn btn-outline-secondary" id="modalNo" data-dismiss="modal">No</button>
             </div>
