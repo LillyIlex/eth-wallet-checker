@@ -2,8 +2,6 @@ var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
 //console.log(gasURL)
 
-
-
 //ajax to target gas
 //function setInterval() {
 $.ajax({
@@ -22,20 +20,20 @@ $.ajax({
     //}), 1000;
 })
 
+//MODAL
 
-//CLICK EVENT FOR GO BUTTON
+//when yes button is clicked -> get text input from the wallet search box -> push into local storage
 
-$("#go-button").on("click", function () {
+//checks for the yes button on the modal being clicked
+$("#modalYes").on("click", function () {
+    //clear wallet key input
+    $("#wallet-key").val("");
 
-    // pull user input into wallet Key var
-    var walletKeyInput = $("#wallet-key:text").val()
-    var walletKey = walletKeyInput
+    //gets the wallet key that was inputted
+    let keyValue = $("#wallet-key").val();
 
-    console.log(walletKey)
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
-    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + walletKey + "&tag=latest&apikey=" + apiKey
-
-    //console.log(walletURL)
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
     //AJAX TARGETING WALLET BALANCE
     $.ajax({
@@ -49,33 +47,38 @@ $("#go-button").on("click", function () {
         console.log(ethBalance)
         //display balance 
         $("#balanceDisplay").append(ethBalance)
+    });
 
+    //saved the key to the local storage
+    localStorage.setItem("walletKey", keyValue);
+
+    $('#exampleModal').modal().hide()
+})
+
+$("#modalNo").on("click", function () {
+   $("#wallet-key").val("");
+
+    $('#exampleModal').modal().hide();
+
+    let keyValue = $("#wallet-key").val();
+    //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
+
+
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
     });
 
 })
-
-//MODAL
-
-
-//when yes button is clicked -> get text input from the wallet search box -> push into local storage
-
-//checks for the yes button on the modal being clicked
-$("#modalYes").on("click", function () {
-
-    //gets the wallet key that was inputted
-    let keyValue = $("#wallet-key").val();
-
-
-        //saved the key to the local storage
-        localStorage.setItem("walletKey", keyValue);
-
-        $('#exampleModal').modal().hide()
-    })
-
-    $("#modalNo").on("click", function(){
-
-        $('#exampleModal').modal().hide();
-    })
 
 
 
