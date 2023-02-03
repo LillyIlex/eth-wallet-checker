@@ -65,10 +65,18 @@ $("#modalYes").on("click", function () {
     //gets the wallet key that was inputted
     let keyValue = $("#wallet-key").val();
 
-    //saved the key to the local storage
-    localStorage.setItem("walletKey", keyValue);
 
-})
+        //saved the key to the local storage
+        localStorage.setItem("walletKey", keyValue);
+
+        $('#exampleModal').modal().hide()
+    })
+
+    $("#modalNo").on("click", function(){
+
+        $('#exampleModal').modal().hide();
+    })
+
 
 
  //if save then append to search history
