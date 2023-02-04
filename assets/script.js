@@ -5,46 +5,44 @@ var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&ap
 var preSave = JSON.parse(localStorage.getItem("walletSave"));
 
 
- //first check if presave is empty -> 
- if (preSave===null){
+//first check if presave is empty -> 
+if (preSave === null) {
     console.log("empty")
 }
 
-else{
+else {
     console.log(preSave)
 }
 
-//function preSave
-
 //ajax to target gas
-//function setInterval() {
 
 $(document).ready(function () {
+
     var update = function () {
 
         $.ajax({
             url: gasURL,
             method: "GET"
-
-//MODAL
-
-
-
         }).then(function (response) {
             var safe = response.result.SafeGasPrice
             var proposed = response.result.ProposeGasPrice
             var fast = response.result.FastGasPrice
             console.log(safe + " " + proposed + " " + fast)
 
+            $("#safeGas").empty()
+            $("#proposedGas").empty()
+            $("#fastGas").empty()
+
             $("#safeGas").append(safe)
             $("#proposedGas").append(proposed)
             $("#fastGas").append(fast)
+
         });
+
     }
-    $("#safeGas").val("")
-    $("#proposedGas").val("")
-    $("#fastGas").val("")
+
     setInterval(update, 1000);
+
 });
 
 //CLICK EVENT FOR GO BUTTON
@@ -55,7 +53,7 @@ $(document).ready(function () {
 //checks for the yes button on the modal being clicked
 $("#modalYes").on("click", function () {
     //clear wallet key input
-    $("#wallet-key").val("");
+
 
     //gets the wallet key that was inputted
     let keyValue = $("#wallet-key").val();
@@ -63,16 +61,14 @@ $("#modalYes").on("click", function () {
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
     var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
-       var walletSave = {
+    var walletSave = {
         walletKey: keyValue,
-        }
+    }
 
-        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
+    var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
 
-        prevSave.push(walletSave);
-        localStorage.setItem("walletSave", JSON.stringify(prevSave));
-
-
+    prevSave.push(walletSave);
+    localStorage.setItem("walletSave", JSON.stringify(prevSave));
 
 
     //AJAX TARGETING WALLET BALANCE
@@ -90,14 +86,43 @@ $("#modalYes").on("click", function () {
 
     });
 
+    function preSaveAppend() {
+        //looping through the presave array
+        for (i = 0; i < preSave.length; i++) {
+            //for every position in the presave array, it will look into the array and get the position value
+            var walletKeyId = preSave[i].walletKey;
+            //console.log(walletKeyId)
+    
+            var buttonPosition = i + 1;
+    
+            if (buttonPosition === 1) {
+                $("#1").append(walletKeyId)
+            } else if (buttonPosition === 2) {
+                $("#2").append(walletKeyId)
+            }
+            else if (buttonPosition === 3) {
+                $("#3").append(walletKeyId)
+            }
+            else if (buttonPosition === 4) {
+                $("#4").append(walletKeyId)
+            }
+            else if (buttonPosition === 5) {
+                $("#5").append(walletKeyId)
+            }
+        }
+    }
+    //calling the function here
+    preSaveAppend();
+    
     //saved the key to the local storage
     localStorage.setItem("walletKey", keyValue);
 
     $('#exampleModal').modal().hide()
+    $("#wallet-key").val("");
 })
 
 $("#modalNo").on("click", function () {
-   $("#wallet-key").val("");
+
 
     $('#exampleModal').modal().hide();
 
@@ -118,58 +143,29 @@ $("#modalNo").on("click", function () {
         //display balance 
         $("#balanceDisplay").append(ethBalance)
     });
+    $("#wallet-key").val("");
+})
 
+$("#go-button").on("click", function() {
+    $("#balanceDisplay").empty()
 })
 
 
-    
-    function preSaveAppend(){
-        //looping through the presave array
-        for (i=0; i<preSave.length; i++){
-            //for every position in the presave array, it will look into the array and get the position value
-            var walletKeyId = preSave[i].walletKey;
-            //console.log(walletKeyId)
-
-            var buttonPosition = i+1;
-
-            if (buttonPosition===1) {
-                $("#1").append(walletKeyId)
-            } else if (buttonPosition===2) {
-                $("#2").append(walletKeyId)
-            }
-            else if (buttonPosition===3) {
-                $("#3").append(walletKeyId)
-            }
-            else if (buttonPosition===4) {
-                $("#4").append(walletKeyId)
-            }
-            else if (buttonPosition===5) {
-                $("#5").append(walletKeyId)
-            }
-        }
-    }
-    //calling the function here
-    preSaveAppend();
-/*
-    $(function () {
-        $("#1").append(localStorage.getItem("walletSave"))
-    })*/
 
 
 
-
-
-
-//FORM - wallet key
-
-
-//LOCAL STORAGE
-// local save to client side storage, Save what coin you are tracking, display last 10 searches?
 
 //clear button
-/*$(".clearBtn").on("click", function() {
-     localStorage.clear()
-   });*/
+
+$("#clearBtn").on("click", function () {
+    localStorage.clear();
+     $("#1").empty();
+     $("#2").empty();
+     $("#3").empty();
+      $("#4").empty();
+      $("#5").empty();
+
+});
 
 //TIME DISPLAY
 /* Current date and time from moment.js

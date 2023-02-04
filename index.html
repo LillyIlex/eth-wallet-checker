@@ -33,7 +33,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-8">Wallet ID input
+      <div class="col-8">Wallet ID input <br> * Test key to copy and paste :  0xf5fC2431947f214995eFc4Bb6ED6dea09e968828 *
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
 
@@ -73,7 +73,7 @@
           <div class="card-body">
             <h5 class="balanceTitle">Ethereum Balance</h5>
             <br>
-            <p class="balanceDisplay" id="balanceDisplay"></p>
+            <p class="balanceDisplay" id="balanceDisplay" type="text"></p>
           </div>
         </div>
       </div>
@@ -87,20 +87,20 @@
           <button type="button" class="btn btn-primary" id="4" data-state="hidden"></button><br>
           <button type="button" class="btn btn-primary" id="5" data-state="hidden"></button><br>
         </div>
+        <button type="button" class="btn btn-primary" id="clearBtn">Clear Search History</button><br>
       </div>
       <div class="col-4">Gas Tracker
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item" id="safeGas">
-              Safe Gas:
+            <li class="list-group-item"  type="text">Safe Gas:<p id="safeGas"></p> 
             </li>
 
-            <li class="list-group-item" id="proposedGas">
-              Proposed Gas:
+            <li class="list-group-item"  type="text">
+              Proposed Gas: <p id="proposedGas"></p> 
             </li>
 
-            <li class="list-group-item" id="fastGas">
-              Fast Gas:
+            <li class="list-group-item"  type="text">
+              Fast Gas:<p id="fastGas"></p> 
             </li>
           </ul>
 
@@ -121,8 +121,6 @@
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.3/jquery.js"></script>
-  <script src="assets/script.js"></script>
-
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
     integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
