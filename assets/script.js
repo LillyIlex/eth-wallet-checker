@@ -11,14 +11,17 @@ if (preSave === null) {
 }
 
 else {
-    console.log(preSave)
+    preSaveAppend(preSave);
+
 }
 
 //ajax to target gas
 
+
 $(document).ready(function () {
 
     var update = function () {
+
 
         $.ajax({
             url: gasURL,
@@ -56,7 +59,8 @@ $("#modalYes").on("click", function () {
 
 
     //gets the wallet key that was inputted
-    let keyValue = $("#wallet-key").val();
+    var keyValue = document.getElementById("wallet-key").value;
+
 
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
     var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
@@ -67,9 +71,17 @@ $("#modalYes").on("click", function () {
 
     var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
 
+    //console.log(preSave)
+
     prevSave.push(walletSave);
     localStorage.setItem("walletSave", JSON.stringify(prevSave));
 
+    var preSaveUpdate = JSON.parse(localStorage.getItem("walletSave"))
+
+    //console.log(preSaveUpdate)
+
+
+    preSaveAppend(preSaveUpdate)
 
     //AJAX TARGETING WALLET BALANCE
     $.ajax({
@@ -80,7 +92,7 @@ $("#modalYes").on("click", function () {
         var weiResult = response.result
 
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        console.log(ethBalance)
+        //console.log(ethBalance)
         //display balance 
         $("#balanceDisplay").append(ethBalance)
 
@@ -123,6 +135,8 @@ $("#modalYes").on("click", function () {
 
 $("#modalNo").on("click", function () {
 
+    $("#wallet-key").val("");
+
 
     $('#exampleModal').modal().hide();
 
@@ -139,18 +153,61 @@ $("#modalNo").on("click", function () {
         var weiResult = response.result
 
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        console.log(ethBalance)
+        //console.log(ethBalance)
         //display balance 
+
+        
+
+        //if (console.log($("#balanceDisplay").text()) === "Euthereum Balance:") {
+
         $("#balanceDisplay").append(ethBalance)
     });
     $("#wallet-key").val("");
 })
+
+
+
+
+function preSaveAppend(preSaveArray) {
+
+
+    if (preSaveArray === null) {
+        console.log(null);
+    }
+    else {
+        //looping through the presave array
+        for (i = 0; i < preSaveArray.length; i++) {
+            //for every position in the presave array, it will look into the array and get the position value
+            var walletKeyId = preSaveArray[i].walletKey;
+
+            //creates a count position so the corresponding save goes to the right button
+            var buttonPosition = i + 1;
+
+            //checks what button position the loop is at and if the button has text yet or not to stop duplicate entries 
+            if (buttonPosition === 1 & $('#1').is(':empty')) {
+                $("#1").append(walletKeyId)
+            } else if (buttonPosition === 2 & $('#2').is(':empty')) {
+                $("#2").append(walletKeyId)
+            }
+            else if (buttonPosition === 3 & $('#3').is(':empty')) {
+                $("#3").append(walletKeyId)
+            }
+            else if (buttonPosition === 4 & $('#4').is(':empty')) {
+                $("#4").append(walletKeyId)
+            }
+            else if (buttonPosition === 5 & $('#5').is(':empty')) {
+                $("#5").append(walletKeyId)
+            }
+        }
+    }
 
 $("#go-button").on("click", function() {
     $("#balanceDisplay").empty()
 })
 
 
+
+}
 
 
 
