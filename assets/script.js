@@ -9,72 +9,43 @@ var preSave = JSON.parse(localStorage.getItem("walletSave"));
 if (preSave === null) {
     console.log("empty")
 }
+
 else {
     preSaveAppend(preSave);
+
 }
 
-//function preSave
-
 //ajax to target gas
-//function setInterval() {
 
 
 $(document).ready(function () {
+
     var update = function () {
 
-        if ($("#safeGas").text() === "Safe Gas:") {
 
+        $.ajax({
+            url: gasURL,
+            method: "GET"
+        }).then(function (response) {
+            var safe = response.result.SafeGasPrice
+            var proposed = response.result.ProposeGasPrice
+            var fast = response.result.FastGasPrice
+            console.log(safe + " " + proposed + " " + fast)
 
-            $.ajax({
-                url: gasURL,
-                method: "GET"
+            $("#safeGas").empty()
+            $("#proposedGas").empty()
+            $("#fastGas").empty()
 
-                //MODAL
+            $("#safeGas").append(safe)
+            $("#proposedGas").append(proposed)
+            $("#fastGas").append(fast)
 
-
-
-            }).then(function (response) {
-                var safe = response.result.SafeGasPrice
-                var proposed = response.result.ProposeGasPrice
-                var fast = response.result.FastGasPrice
-                //console.log(safe + " " + proposed + " " + fast)
-
-                $("#safeGas").append(safe)
-                $("#proposedGas").append(proposed)
-                $("#fastGas").append(fast)
-            });
-
-        }
-        else {
-            $("#safeGas").text("Safe Gas: ");
-            $("#proposedGas").text("Proposed Gas: ");
-            $("#fastGas").text("Fast Gas: ");
-            $.ajax({
-                url: gasURL,
-                method: "GET"
-
-                //MODAL
-
-
-
-            }).then(function (response) {
-                var safe = response.result.SafeGasPrice
-                var proposed = response.result.ProposeGasPrice
-                var fast = response.result.FastGasPrice
-                //console.log(safe + " " + proposed + " " + fast)
-
-                $("#safeGas").append(safe)
-                $("#proposedGas").append(proposed)
-                $("#fastGas").append(fast)
-            });
-
-        }
+        });
 
     }
-    $("#safeGas").val("")
-    $("#proposedGas").val("")
-    $("#fastGas").val("")
-    setInterval(update, 5000);
+
+    setInterval(update, 1000);
+
 });
 
 //CLICK EVENT FOR GO BUTTON
@@ -109,6 +80,7 @@ $("#modalYes").on("click", function () {
 
     //console.log(preSaveUpdate)
 
+
     preSaveAppend(preSaveUpdate)
 
     //AJAX TARGETING WALLET BALANCE
@@ -126,14 +98,45 @@ $("#modalYes").on("click", function () {
 
     });
 
+    function preSaveAppend() {
+        //looping through the presave array
+        for (i = 0; i < preSave.length; i++) {
+            //for every position in the presave array, it will look into the array and get the position value
+            var walletKeyId = preSave[i].walletKey;
+            //console.log(walletKeyId)
+    
+            var buttonPosition = i + 1;
+    
+            if (buttonPosition === 1) {
+                $("#1").append(walletKeyId)
+            } else if (buttonPosition === 2) {
+                $("#2").append(walletKeyId)
+            }
+            else if (buttonPosition === 3) {
+                $("#3").append(walletKeyId)
+            }
+            else if (buttonPosition === 4) {
+                $("#4").append(walletKeyId)
+            }
+            else if (buttonPosition === 5) {
+                $("#5").append(walletKeyId)
+            }
+        }
+    }
+    //calling the function here
+    preSaveAppend();
+    
     //saved the key to the local storage
     localStorage.setItem("walletKey", keyValue);
 
     $('#exampleModal').modal().hide()
+    $("#wallet-key").val("");
 })
 
 $("#modalNo").on("click", function () {
+
     $("#wallet-key").val("");
+
 
     $('#exampleModal').modal().hide();
 
@@ -159,8 +162,9 @@ $("#modalNo").on("click", function () {
 
         $("#balanceDisplay").append(ethBalance)
     });
-
+    $("#wallet-key").val("");
 })
+
 
 
 
@@ -197,21 +201,28 @@ function preSaveAppend(preSaveArray) {
         }
     }
 
+$("#go-button").on("click", function() {
+    $("#balanceDisplay").empty()
+})
+
+
 
 }
 
 
 
-//FORM - wallet key
-
-
-//LOCAL STORAGE
-// local save to client side storage, Save what coin you are tracking, display last 10 searches?
 
 //clear button
-/*$(".clearBtn").on("click", function() {
-     localStorage.clear()
-   });*/
+
+$("#clearBtn").on("click", function () {
+    localStorage.clear();
+     $("#1").empty();
+     $("#2").empty();
+     $("#3").empty();
+      $("#4").empty();
+      $("#5").empty();
+
+});
 
 //TIME DISPLAY
 /* Current date and time from moment.js
