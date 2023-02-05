@@ -55,46 +55,46 @@ $(document).ready(function () {
 //checks for the yes button on the modal being clicked
 $("#modalYes").on("click", function () {
 
-        //gets the wallet key that was inputted
-        var keyValue = document.getElementById("wallet-key").value;
+    //gets the wallet key that was inputted
+    var keyValue = document.getElementById("wallet-key").value;
 
 
-        //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
-        var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
+    //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
-        var walletSave = {
-            walletKey: keyValue,
-        }
+    var walletSave = {
+        walletKey: keyValue,
+    }
 
-        var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
+    var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
 
-        //console.log(preSave)
+    //console.log(preSave)
 
-        prevSave.push(walletSave);
-        localStorage.setItem("walletSave", JSON.stringify(prevSave));
+    prevSave.push(walletSave);
+    localStorage.setItem("walletSave", JSON.stringify(prevSave));
 
-        var preSaveUpdate = JSON.parse(localStorage.getItem("walletSave"))
+    var preSaveUpdate = JSON.parse(localStorage.getItem("walletSave"))
 
-        //console.log(preSaveUpdate)
+    //console.log(preSaveUpdate)
 
 
-        preSaveAppend(preSaveUpdate)
+    preSaveAppend(preSaveUpdate)
 
-        //AJAX TARGETING WALLET BALANCE
-        $.ajax({
-            url: walletURL,
-            method: "GET"
-        }).then(function (response) {
-            // console.log(response)
-            var weiResult = response.result
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
 
-            var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-            //console.log(ethBalance)
-            //display balance 
-            $("#balanceDisplay").append(ethBalance)
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
 
-        })
-    ;
+    })
+        ;
 
     //saved the key to the local storage
     localStorage.setItem("walletKey", keyValue);
@@ -177,16 +177,16 @@ function preSaveAppend(preSaveArray) {
 
         var preSaveUpdate = JSON.parse(localStorage.getItem("walletSave"))
 
-        if (preSaveUpdate === null){
-            $("#maxSave").css("display","none");
+        if (preSaveUpdate === null) {
+            $("#maxSave").css("display", "none");
             $("#modalYes").attr("disabled", false)
         }
-        else if (preSaveUpdate.length >= 5){
-            $("#maxSave").css("display","block");
+        else if (preSaveUpdate.length >= 5) {
+            $("#maxSave").css("display", "block");
             $("#modalYes").attr("disabled", true)
         }
-        else if (preSaveUpdate.length < 5){
-            $("#maxSave").css("display","none");
+        else if (preSaveUpdate.length < 5) {
+            $("#maxSave").css("display", "none");
             $("#modalYes").attr("disabled", false)
         }
 
@@ -205,6 +205,113 @@ $("#clearBtn").on("click", function () {
     $("#5").empty();
 
 });
+
+
+$("#1").click(function () {
+    $("#balanceDisplay").empty();
+    var savedKey = this.textContent;
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + savedKey + "&tag=latest&apikey=" + apiKey;
+
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+
+    });
+
+})
+$("#2").click(function () {
+    $("#balanceDisplay").empty();
+    var savedKey = this.textContent;
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + savedKey + "&tag=latest&apikey=" + apiKey;
+
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+
+    });
+
+})
+$("#3").click(function () {
+    $("#balanceDisplay").empty();
+    var savedKey = this.textContent;
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + savedKey + "&tag=latest&apikey=" + apiKey;
+
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+
+    });
+
+})
+$("#4").click(function () {
+    $("#balanceDisplay").empty();
+    var savedKey = this.textContent;
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + savedKey + "&tag=latest&apikey=" + apiKey;
+
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+
+    });
+
+})
+$("#5").click(function () {
+    $("#balanceDisplay").empty();
+    var savedKey = this.textContent;
+    var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + savedKey + "&tag=latest&apikey=" + apiKey;
+
+    //AJAX TARGETING WALLET BALANCE
+    $.ajax({
+        url: walletURL,
+        method: "GET"
+    }).then(function (response) {
+        // console.log(response)
+        var weiResult = response.result
+
+        var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
+        //console.log(ethBalance)
+        //display balance 
+        $("#balanceDisplay").append(ethBalance)
+
+    });
+
+})
 
 //TIME DISPLAY
 /* Current date and time from moment.js
