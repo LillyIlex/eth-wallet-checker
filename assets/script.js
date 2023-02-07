@@ -105,8 +105,6 @@ $("#modalYes").on("click", function () {
 
 $("#modalNo").on("click", function () {
 
-    $("#wallet-key").val("");
-
 
     $('#exampleModal').modal().hide();
 
