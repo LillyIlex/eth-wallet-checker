@@ -1,4 +1,32 @@
-.tracker {
-    padding: 20px;
-    margin: 20px;
+
+* {
+    font-family: 'Questrial' , sans-serif;
+    
+}
+
+#jumboheading{
+    text-align: center;
+}
+
+.jumbotron {
+    max-height: 200px;
+    text-align: center;
+    background-color: #FE823D !important;
+    color: white;
+}
+
+footer {
+    text-align: center;
+    background-color: #FE823D !important;
+    color: white;
+}
+
+footer li a {
+    font-size: large;
+    color: white;
+}
+
+.btn {
+    background-color: #FE823D!important;
+    color: white!important;
 }
