@@ -32,7 +32,18 @@ To clear all the saved wallet addresses you need to click the clear search histo
 
 
 Credits:
-N/A
+
+https://github.com/LillyIlex/
+
+https://github.com/sophiemarisa/
+
+https://github.com/CDCchris/
+
+https://github.com/charlyboyoh/
+
+https://github.com/G-Flodd/
+
 
 License:
+
 Please refer to the LICENSE in the repo.
