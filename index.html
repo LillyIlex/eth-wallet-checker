@@ -24,8 +24,8 @@
   <header>
     <div class="jumbotron jumbotron-fluid">
       <div class="container">
-        <h1 class="display-4">Ether Scanner</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.
+        <h1 class="display-4">Ethereum Wallet Checker</h1>
+        <p class="lead">Here you are able to check your wallet balance and see Gas fees with live updates
         </p>
       </div>
     </div>
@@ -33,7 +33,7 @@
 
   <div class="container">
     <div class="row">
-      <div class="col-8">Wallet ID input <br> * Test key to copy and paste :  0xf5fC2431947f214995eFc4Bb6ED6dea09e968828 *
+      <div class="col-lg-8 col-sm-12"> <h5>Wallet ID input <br></h5>
         <div class="input-group input-group-sm mb-3">
           <div class="input-group-prepend">
 
@@ -63,14 +63,15 @@
 
               <button type="button" class="btn btn-outline-secondary" id="modalYes" data-dismiss="modal">Yes</button>
               <button type="button" class="btn btn-outline-secondary" id="modalNo" data-dismiss="modal">No</button>
-              <h6 id="maxSave" style="display:none">You have reached your limit of 5 wallets saved! Clear your history to save a new wallet.</h6>
-        
+              <h6 id="maxSave" style="display:none">You have reached your limit of 5 wallets saved! Clear your history
+                to save a new wallet.</h6>
+
             </div>
           </div>
         </div>
       </div>
 
-      <div class="col-4">
+      <div class="col-lg-4 col-sm-12 mb-3">
         <div class="card" style="width: 18rem;">
           <div class="card-body">
             <h5 class="balanceTitle">Ethereum Balance</h5>
@@ -80,8 +81,8 @@
         </div>
       </div>
       <div class="w-100"></div>
-      <div class="col-8">Search History
-
+      <div class="col-lg-8 col-sm-12">
+        <h5 >Recent Addresses</h5>
         <div class="list-group" id="history" style="width: 30rem" ;>
           <button type="button" class="btn btn-primary" id="1" data-state="hidden"></button><br>
           <button type="button" class="btn btn-primary" id="2" data-state="hidden"></button><br>
@@ -91,18 +92,20 @@
         </div>
         <button type="button" class="btn btn-primary" id="clearBtn">Clear Search History</button><br>
       </div>
-      <div class="col-4">Gas Tracker
+      
+      <div class="col-lg-4 col-sm-12 mt-3 mb-3">
         <div class="card" style="width: 18rem;">
           <ul class="list-group list-group-flush">
-            <li class="list-group-item"  type="text">Safe Gas:<p id="safeGas"></p> 
+            <li class="list-group-item" type="text"><h5>Gas Tracker</h5></li>
+            <li class="list-group-item" type="text">Safe Gas: <span id="safeGas"></span>
             </li>
 
-            <li class="list-group-item"  type="text">
-              Proposed Gas: <p id="proposedGas"></p> 
+            <li class="list-group-item" type="text">
+              Proposed Gas: <span id="proposedGas"></span>
             </li>
 
-            <li class="list-group-item"  type="text">
-              Fast Gas:<p id="fastGas"></p> 
+            <li class="list-group-item" type="text">
+              Fast Gas: <span id="fastGas"></span>
             </li>
           </ul>
 
@@ -113,7 +116,7 @@
 
 
 
- 
+
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
     integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
     crossorigin="anonymous"></script>
@@ -133,8 +136,16 @@
     crossorigin="anonymous"></script>
   <script src="./assets/script.js"></script>
 
-  <footer>
-
+  <footer class="py-3 my-4">
+    <p>Visit our GitHub pages</p>
+    <ul class="nav justify-content-center border-bottom pb-3 mb-3">
+      <li class="nav-item"><a href="https://github.com/LillyIlex/" class="nav-link px-2 text-muted">Lil Corris</a></li>
+      <li class="nav-item"><a href="https://github.com/sophiemarisa/" class="nav-link px-2 text-muted">Sophie Charlwood</a></li>
+      <li class="nav-item"><a href="https://github.com/CDCchris/" class="nav-link px-2 text-muted">Chris Cook</a></li>
+      <li class="nav-item"><a href="https://github.com/G-Flodd/" class="nav-link px-2 text-muted">George Dodd</a></li>
+      <li class="nav-item"><a href="https://github.com/charlyboyoh/" class="nav-link px-2 text-muted">Charles O</a></li>
+    </ul>
+    <p class="text-center text-muted">© 2023 Project Group A</p>
   </footer>
 </body>
 
