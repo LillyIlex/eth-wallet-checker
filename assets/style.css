@@ -4,6 +4,10 @@
     
 }
 
+body{
+    overflow-y: scroll;
+}
+
 #jumboheading{
     text-align: center;
 }
@@ -19,9 +23,10 @@ footer {
     text-align: center;
     background-color: #FE823D !important;
     color: white;
-    position:absolute;
+    position:relative;
     bottom:0;
     width:100%;
+    margin-top: 50px;
 
 }
 
