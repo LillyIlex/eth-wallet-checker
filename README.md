@@ -13,21 +13,21 @@ Usage:
 
 To use the wallet balance checker you will need to first click into the check balance box and enter in your wallet address and click go.
 
-![Wallet ID](https://user-images.githubusercontent.com/117348764/217335350-2d523e16-dbf7-42db-9615-173ebe26dffc.png)
+![Wallet ID](https://user-images.githubusercontent.com/117348764/217617815-e89721d1-bf5d-4e61-af16-a24b5e5734a4.png)
 
 You will then need to choose whether you want to save the wallet address or not.
 
-![Save wallet button](https://user-images.githubusercontent.com/117348764/217337666-df62857f-aa52-41e0-8325-9f55eedd5645.png)
+![Save wallet button](https://user-images.githubusercontent.com/117348764/217617784-19a1cfc0-2c4b-4d5b-8d50-98deba6fc634.png)
 
 If you choose to save the wallet address it will then display the Ethereum balance, and you will see the wallet address in the search history.
 
-![Balance Display](https://user-images.githubusercontent.com/117348764/217338105-9333cc67-2d27-4e1d-be60-d525c355a91e.png)
+![Balance Display](https://user-images.githubusercontent.com/117348764/217617732-69cf1f07-643b-47c9-96b6-083fdd8d1187.png)
 
-![Save history](https://user-images.githubusercontent.com/117348764/217338138-a16ff968-a057-44ab-919f-0b93ee0c828a.png)
+![Save history](https://user-images.githubusercontent.com/117348764/217617671-bf63ad52-188c-4193-929a-299d7af8336f.png)
 
 To clear all the saved wallet addresses you need to click the clear search history button.
 
-![Clear History Button](https://user-images.githubusercontent.com/117348764/217338348-4a890729-f603-42a5-9d7c-a46e383fe913.png)
+![Clear History Button](https://user-images.githubusercontent.com/117348764/217617620-fe6ddf64-aa72-45af-9501-cb5abdbbcb1e.png)
 
 
 
