@@ -9,7 +9,7 @@
 }
 
 .jumbotron {
-    max-height: 200px;
+    max-height: 220px;
     text-align: center;
     background-color: #FE823D !important;
     color: white;
@@ -19,6 +19,10 @@ footer {
     text-align: center;
     background-color: #FE823D !important;
     color: white;
+    position:absolute;
+    bottom:0;
+    width:100%;
+
 }
 
 footer li a {
@@ -27,6 +31,20 @@ footer li a {
 }
 
 .btn {
-    background-color: #FE823D!important;
+    background-color: #f19969!important;
     color: white!important;
+    border-color: #f19969!important;
+}
+
+.btn:hover {
+    background-color: #FE5315!important;
+}
+
+.input-group>.input-group-append:last-child>.btn:not(:last-child):not(.dropdown-toggle), .input-group>.input-group-append:last-child>.input-group-text:not(:last-child), .input-group>.input-group-append:not(:last-child)>.btn, .input-group>.input-group-append:not(:last-child)>.input-group-text, .input-group>.input-group-prepend>.btn, .input-group>.input-group-prepend>.input-group-text {
+    background-color: #FE823D!important;
+    color: white;
+}
+
+.card{
+    border: solid 3px #FE5315!important;
 }
