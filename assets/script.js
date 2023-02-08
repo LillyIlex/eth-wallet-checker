@@ -1,6 +1,6 @@
 var apiKey = "YX7AA3H64Z229JBGCQPVYYE6Z8MF5NUC5T"
 var gasURL = "https://api.etherscan.io/api?module=gastracker&action=gasoracle&apikey=" + apiKey
-//console.log(gasURL)
+
 //saved the content of localstorage in the variable preSave
 var preSave = JSON.parse(localStorage.getItem("walletSave"));
 
@@ -15,8 +15,6 @@ else {
 }
 
 //ajax to target gas
-
-
 $(document).ready(function () {
 
     var update = function () {
@@ -29,7 +27,6 @@ $(document).ready(function () {
             var safe = response.result.SafeGasPrice
             var proposed = response.result.ProposeGasPrice
             var fast = response.result.FastGasPrice
-            //console.log(safe + " " + proposed + " " + fast)
 
             $("#safeGas").empty()
             $("#proposedGas").empty()
@@ -46,11 +43,6 @@ $(document).ready(function () {
     setInterval(update, 1000);
 
 });
-
-//CLICK EVENT FOR GO BUTTON
-
-//when yes button is clicked -> get text input from the wallet search box -> push into local storage
-
 
 //checks for the yes button on the modal being clicked
 $("#modalYes").on("click", function () {
@@ -69,15 +61,9 @@ $("#modalYes").on("click", function () {
     var prevSave = JSON.parse(localStorage.getItem("walletSave") || '[]');
 
     //console.log(preSave)
-
     prevSave.push(walletSave);
     localStorage.setItem("walletSave", JSON.stringify(prevSave));
-
     var preSaveUpdate = JSON.parse(localStorage.getItem("walletSave"))
-
-    //console.log(preSaveUpdate)
-
-
     preSaveAppend(preSaveUpdate)
 
     //AJAX TARGETING WALLET BALANCE
@@ -87,9 +73,7 @@ $("#modalYes").on("click", function () {
     }).then(function (response) {
         // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
         //display balance 
         $("#balanceDisplay").append(ethBalance)
 
@@ -98,13 +82,12 @@ $("#modalYes").on("click", function () {
 
     //saved the key to the local storage
     localStorage.setItem("walletKey", keyValue);
-
     $('#exampleModal').modal().hide()
     $("#wallet-key").val("");
 })
 
+//if no save button clicked on modal
 $("#modalNo").on("click", function () {
-
 
     $('#exampleModal').modal().hide();
 
@@ -112,28 +95,19 @@ $("#modalNo").on("click", function () {
     //var walletKeyTest = "0xf5fC2431947f214995eFc4Bb6ED6dea09e968828"
     var walletURL = "https://api.etherscan.io/api?module=account&action=balance&address=" + keyValue + "&tag=latest&apikey=" + apiKey
 
-
     $.ajax({
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
+
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
+
         //display balance 
-
-
-
-        //if (console.log($("#balanceDisplay").text()) === "Euthereum Balance:") {
-
         $("#balanceDisplay").append(ethBalance)
     });
     $("#wallet-key").val("");
 })
-
-
 
 
 function preSaveAppend(preSaveArray) {
@@ -193,7 +167,6 @@ function preSaveAppend(preSaveArray) {
 
 
 //clear button
-
 $("#clearBtn").on("click", function () {
     localStorage.clear();
     $("#1").empty();
@@ -204,7 +177,7 @@ $("#clearBtn").on("click", function () {
 
 });
 
-
+//code below for if the key save buttons are clicked
 $("#1").click(function () {
     $("#balanceDisplay").empty();
     var savedKey = this.textContent;
@@ -215,12 +188,8 @@ $("#1").click(function () {
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
-        //display balance 
         $("#balanceDisplay").append(ethBalance)
 
     });
@@ -236,12 +205,8 @@ $("#2").click(function () {
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
-        //display balance 
         $("#balanceDisplay").append(ethBalance)
 
     });
@@ -257,12 +222,8 @@ $("#3").click(function () {
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
-        //display balance 
         $("#balanceDisplay").append(ethBalance)
 
     });
@@ -278,12 +239,8 @@ $("#4").click(function () {
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
-        //display balance 
         $("#balanceDisplay").append(ethBalance)
 
     });
@@ -299,38 +256,26 @@ $("#5").click(function () {
         url: walletURL,
         method: "GET"
     }).then(function (response) {
-        // console.log(response)
         var weiResult = response.result
-
         var ethBalance = (weiResult / 1000000000000000000).toFixed(4)
-        //console.log(ethBalance)
-        //display balance 
         $("#balanceDisplay").append(ethBalance)
 
     });
 
 })
 
-//TIME DISPLAY
-/* Current date and time from moment.js
+//Current date and time from moment.js
     // DATE & TIME FROM MOMENT.JS
 var datetime = null,
     date = null;
 
 var update = function () {
     date = moment(new Date())
-    datetime.html(date.format('dddd, MMMM Do YYYY, h:mm a'));
+    datetime.html(date.format('dddd  Do MMMM YYYY ｜ h:mm a'));
 };
 $(document).ready(function () {
-    datetime = $('#currentDay')
+    datetime = $('#date-time')
     update();
     setInterval(update, 1000);
 });
 
-*/
-
-    //SET INTERVAL 
-/* function setInterval() {
-    for () {
-}, 1000;
-} */
