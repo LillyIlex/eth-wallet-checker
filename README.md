@@ -2,12 +2,14 @@
 # Ethereum Wallet Balance Checker
 
 
-##Description:
+## Description:
+
 This web page has been put together to show the Ethereum balance for any wallet address that is entered on the page. On entering your Wallet ID, you will be askde whether you would like to save your wallet ID. Once answered, your balance will display on the web app. If selected 'yes', your wallet addresses will be saved for future use. The previously saved wallet IDs can be cleared by pressing the 'clear search history' button .
 
 There is also a live Gas tracker, which will update in real time, showing you the latest gas prices.
 
-##Usage:
+## Usage:
+
 To use the wallet balance checker you will need to first click into the check balance box and enter in your wallet address and click go.
 
 ![Wallet ID](https://user-images.githubusercontent.com/117348764/217617815-e89721d1-bf5d-4e61-af16-a24b5e5734a4.png)
