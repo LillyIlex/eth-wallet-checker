@@ -34,19 +34,19 @@ Our end result resembled our inital wireframe, and we referred to this throughou
 ![Wireframe](https://user-images.githubusercontent.com/117348764/216164373-813c0ea4-21d2-479a-b362-310f9d458702.png)
 
 
-Credits: Chris Cook, Sophie Charlwood, George Dodd, Charles O
+### Credits: 
 
-https://github.com/LillyIlex/
-
+#### Sophie Charlwood
 https://github.com/sophiemarisa/
 
+#### Chris Cook
 https://github.com/CDCchris/
 
-https://github.com/charlyboyoh/
-
+#### George Dodd
 https://github.com/G-Flodd/
 
+#### Charles O
+https://github.com/charlyboyoh/
 
-License:
-
-Please refer to the LICENSE in the repo.
+#### Lil Corris
+https://github.com/LillyIlex/
