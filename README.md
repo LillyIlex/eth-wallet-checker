@@ -7,6 +7,7 @@
 This web page has been put together to show the Ethereum balance for any wallet address that is entered on the page. On entering your Wallet ID, you will be askde whether you would like to save your wallet ID. Once answered, your balance will display on the web app. If selected 'yes', your wallet addresses will be saved for future use. The previously saved wallet IDs can be cleared by pressing the 'clear search history' button .
 
 There is also a live Gas tracker, which will update in real time, showing you the latest gas prices.
+
 Here is a link to they deployed webpage: https://lillyilex.github.io/eth-wallet-checker/
 
 ## Usage:
