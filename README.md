@@ -36,17 +36,12 @@ Our end result resembled our inital wireframe, and we referred to this throughou
 
 ### Credits: 
 
-#### Sophie Charlwood
-https://github.com/sophiemarisa/
+#### Sophie Charlwood https://github.com/sophiemarisa/
 
-#### Chris Cook
-https://github.com/CDCchris/
+#### Chris Cook https://github.com/CDCchris/
 
-#### George Dodd
-https://github.com/G-Flodd/
+#### George Dodd https://github.com/G-Flodd/
 
-#### Charles O
-https://github.com/charlyboyoh/
+#### Charles O https://github.com/charlyboyoh/
 
-#### Lil Corris
-https://github.com/LillyIlex/
+#### Lil Corris https://github.com/LillyIlex/
